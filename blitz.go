@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"image"
-	"log"
 	"math"
 	"math/rand"
 	"os"
@@ -139,8 +138,6 @@ func initSDL() {
 }
 
 func load() {
-	log.SetPrefix("load: ")
-
 	m, err := imageutil.LoadFile(filepath.Join(*assets, "spritesheet.bmp"))
 	ck(err)
 
@@ -300,9 +297,7 @@ func drawBuildings() {
 	tallest := HEIGHT
 
 	err := screen.SetTarget(building)
-	if err != nil {
-		log.Fatal(err)
-	}
+	ck(err)
 	defer screen.SetTarget(nil)
 
 	screen.SetDrawColor(sdlcolor.Transparent)
@@ -524,9 +519,7 @@ func checkForStrike() bool {
 
 func removeStory(col int) {
 	err := screen.SetTarget(building)
-	if err != nil {
-		log.Fatal(err)
-	}
+	ck(err)
 	defer screen.SetTarget(nil)
 
 	screen.SetDrawColor(sdlcolor.Transparent)
