@@ -1,0 +1,19 @@
+Introduction
+============
+
+Blitz-SDL is a game based on the VIC-20 game Blitz.
+
+The aim is to destroy all the buildings by dropping bombs from your plane.
+
+The controls are -
+
+Esc - Quit
+P - Pause
+S - Toggle Sound
+Other - Drop Bomb
+
+
+Building and Installing Blitz-SDL
+=================================
+
+See the INSTALL file.
