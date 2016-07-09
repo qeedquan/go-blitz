@@ -28,10 +28,6 @@ type Entity struct {
 	next    int
 }
 
-type SubImager interface {
-	SubImage(image.Rectangle) image.Image
-}
-
 type State int
 
 const (
@@ -138,15 +134,15 @@ func initSDL() {
 }
 
 func load() {
-	m, err := imageutil.LoadFile(filepath.Join(*assets, "spritesheet.bmp"))
+	img, err := imageutil.LoadFile(filepath.Join(*assets, "spritesheet.bmp"))
 	ck(err)
 
-	img := imageutil.ColorKey(m, sdl.Color{20, 52, 87, 255})
+	img = imageutil.ColorKey(img, sdl.Color{20, 52, 87, 255})
 
 	sprites, err = sdlimage.LoadTextureImage(screen.Renderer, img)
 	ck(err)
 
-	icon := img.(SubImager).SubImage(image.Rect(600, 0, 632, 32))
+	icon := img.SubImage(image.Rect(600, 0, 632, 32))
 	surface, err := sdlimage.LoadSurfaceImage(icon)
 	ck(err)
 	screen.SetIcon(surface)
