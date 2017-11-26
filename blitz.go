@@ -134,7 +134,7 @@ func initSDL() {
 }
 
 func load() {
-	img, err := imageutil.LoadFile(filepath.Join(*assets, "spritesheet.bmp"))
+	img, err := imageutil.LoadRGBAFile(filepath.Join(*assets, "spritesheet.bmp"))
 	ck(err)
 
 	img = imageutil.ColorKey(img, sdl.Color{20, 52, 87, 255})
