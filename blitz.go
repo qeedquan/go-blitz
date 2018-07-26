@@ -58,6 +58,7 @@ var (
 	assets     = flag.String("assets", "assets", "data directory")
 	fullscreen = flag.Bool("fullscreen", false, "fullscreen")
 	mute       = flag.Bool("mute", false, "mute")
+	cheat      = flag.Bool("cheat", false, "never descend")
 
 	screen     *Display
 	sprites    *sdl.Texture
@@ -454,7 +455,9 @@ func movePlane() {
 		plane.x += PLANEINC
 		if plane.x > WIDTH {
 			plane.x = -67
-			plane.y += 10
+			if !*cheat {
+				plane.y += 10
+			}
 		}
 		plane.next = plane.between - 1
 	} else {
